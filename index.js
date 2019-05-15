@@ -2,8 +2,12 @@ const express = require('express');
 const app = new express();
 const Joi = require('joi');
 var _ = require('underscore');
+const logger = require('./logger');
 
-app.use(express.json());
+app.use(express.json()); // req.body
+app.use(express.urlencoded({extended: true}));
+app.use(logger);
+
 
 var result = _.contains([1,2,3],2);
 console.log(result);
