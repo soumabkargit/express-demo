@@ -1,13 +1,18 @@
 const express = require('express');
 const app = new express();
 const Joi = require('joi');
-var _ = require('underscore');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const logger = require('./logger');
+var _ = require('underscore');
+
 
 app.use(express.json()); // req.body
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(logger);
+app.use(helmet());
+app.use(morgan('tiny'));
 
 
 var result = _.contains([1,2,3],2);
