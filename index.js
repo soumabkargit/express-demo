@@ -6,6 +6,7 @@ const logger = require('./logger');
 
 app.use(express.json()); // req.body
 app.use(express.urlencoded({extended: true}));
+app.use(express.static('public'));
 app.use(logger);
 
 
