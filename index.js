@@ -31,6 +31,7 @@ if (app.get('env')==='development'){
 }
 
 // Db work
+var mysql = require('mysql');
 dbDebugger('Connected to the database ...');
 
 var result = _.contains([1,2,3],2);
