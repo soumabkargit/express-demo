@@ -1,0 +1,31 @@
+{
+  "name": "npm-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soumabkargit/node-npm-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soumabkargit/node-npm-demo/issues"
+  },
+  "homepage": "https://github.com/soumabkargit/node-npm-demo#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "helmet": "^3.18.0",
+    "joi": "^14.3.1",
+    "mongoose": "^5.5.8",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.0",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.10.2"
+  }
+}
