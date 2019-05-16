@@ -1,25 +1,46 @@
 const express = require('express');
-const app = new express();
+const app =  express();
+/*
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`) ;
+console.log(`app: ${app.get('env')}`) ;
+*/
 const Joi = require('joi');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const logger = require('./logger');
+const config = require('config');
 var _ = require('underscore');
-
-
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
+// configuration
+console.log(`Application Name: ${config.get('name')}`);
+console.log(`Mail Server: ${config.get('mail.host')}`);
+console.log(`Mail Server: ${config.get('mail.password')}`);
 app.use(express.json()); // req.body
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(logger);
 app.use(helmet());
-app.use(morgan('tiny'));
 
+app.set('view engine','pug');
+app.set('views','./views');
+
+if (app.get('env')==='development'){
+    app.use(morgan('tiny'));
+    startupDebugger('Morgan enable...');
+}
+
+// Db work
+dbDebugger('Connected to the database ...');
 
 var result = _.contains([1,2,3],2);
 console.log(result);
 
 app.get('/', (req, res)=>{
-res.send('Hello World');
+res.render('index', {
+    title: 'My Express App',
+    message: 'Hello'
+});
 });
 
 const courses = [
